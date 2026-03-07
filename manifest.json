@@ -1,0 +1,14 @@
+{
+  "name": "Cuemath Student",
+  "short_name": "Cuemath",
+  "start_url": "/?mode=pwa",
+  "display": "standalone",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "https://www.cuemath.com/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
