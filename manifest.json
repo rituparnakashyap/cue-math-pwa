@@ -1,14 +1,19 @@
 {
   "name": "Cuemath Student",
   "short_name": "Cuemath",
-  "start_url": "/?mode=pwa",
+  "description": "Launch Cuemath lessons from your Chromebook",
+  "start_url": "/cue-math-pwa/",
+  "scope": "/cue-math-pwa/",
   "display": "standalone",
-  "scope": "/",
+  "orientation": "portrait",
+  "theme_color": "#002d62",
+  "background_color": "#ffffff",
   "icons": [
     {
-      "src": "https://www.cuemath.com/favicon.ico",
-      "sizes": "64x64",
-      "type": "image/x-icon"
+      "src": "/cue-math-pwa/cue-math-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

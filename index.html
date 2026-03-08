@@ -1,48 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <title>Cuemath Launcher</title>
-    <style>
-        body { 
-            background: #ffffff;
-            color: #002d62;
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center; 
-            height: 100vh; 
-            margin: 0; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .btn {
-            background-color: #ffcc00; /* Cuemath Yellow */
-            color: #002d62;
-            border: none;
-            padding: 20px 50px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
-        }
-        .btn:active {
-            transform: scale(0.95);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#002d62">
+  <meta name="description" content="Launch Cuemath lessons from your Chromebook">
+  <link rel="manifest" href="/cue-math-pwa/manifest.json">
+  <title>Cuemath Launcher</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #ffffff;
+      color: #002d62;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      background-color: #ffcc00;
+      color: #002d62;
+      border: none;
+      padding: 20px 50px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
 <body>
-    <img src="cue-math-logo.png" alt="Cuemath" style="width: 200px; margin-bottom: 30px;">
-    <button class="btn" onclick="launchInSameWindow()">Start Math Lesson</button>
+  <img class="logo" src="/cue-math-pwa/cue-math-logo.png" alt="Cuemath">
+  <button class="btn" onclick="launch()">Start Math Lesson</button>
 
-    <script>
-        function launchInSameWindow() {
-            // Using .href in an onclick keeps the navigation in the current PWA window
-            window.location.href = "https://leap.cuemath.com/home";
-        }
-    </script>
+  <script>
+    function launch() {
+      window.location.href = 'https://leap.cuemath.com/home';
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/cue-math-pwa/sw.js');
+    }
+  </script>
 </body>
 </html>
